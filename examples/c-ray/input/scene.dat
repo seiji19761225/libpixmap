@@ -1,0 +1,21 @@
+# spheres
+#	position		radius		color		shininess	reflectivity
+s	-1.5 -0.3 -1.0		0.7		1.0  0.2  0.05	50.0		0.3
+s	 1.5 -0.4  0.0		0.6		0.1  0.85 1.0	50.0		0.4
+
+# walls
+#	position		radius		color		shininess	reflectivity
+s	0.0 -1000.0 2.0		999.0		0.1  0.2  0.6	80.0		0.8
+
+# bouncing ball
+#	position		radius		color		shininess	reflectivity
+s	0.0  0.0  2.0		1.0		1.0  0.5 0.1	60.0		0.7
+
+# lights...
+#	position
+l	-50.0 100.0 -50.0
+l	 40.0  40.0 150.0
+
+# camera (there can be only one!)
+#	position		FOV		target
+c	0.0 6.0 -17.0		45.0		0.0 -1.0  0.0

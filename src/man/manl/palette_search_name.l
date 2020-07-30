@@ -1,0 +1,1 @@
+../palette/palette_search_name.l

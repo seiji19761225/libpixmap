@@ -1,0 +1,2 @@
+ 200 200               # NX,NY
+ 600 0.0001 1000000 50 # Re,DT,NT(Total NO.),MT(Output Interval)

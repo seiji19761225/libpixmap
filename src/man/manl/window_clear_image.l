@@ -1,0 +1,1 @@
+../window/window_clear_image.l

@@ -1,0 +1,1 @@
+../window/window_put_image.l

@@ -1,0 +1,92 @@
+
+    #          #    #####   #####      #    #    #  #    #    ##    #####
+    #          #    #    #  #    #     #     #  #   ##  ##   #  #   #    #
+    #          #    #####   #    #     #      ##    # ## #  #    #  #    #
+    #          #    #    #  #####      #      ##    #    #  ######  #####
+    #          #    #    #  #          #     #  #   #    #  #    #  #
+    ######     #    #####   #          #    #    #  #    #  #    #  #
+
+Copyright (c) 2010-2015
+     Seiji Nishimura,  All rights reserved.
+E-Mail: seiji1976@gmail.com
+
+$Id: INSTALL.txt,v 1.1.1.2 2015/01/14 00:00:00 seiji Exp seiji $
+
+1. Introduction
+This document tells you how to install the libpixmap library on your computer system.
+The source code is written in standard C language for the portability.
+So, it is easy to port the library to POSIX compliant systems.
+
+2. System Requirement
+Required system components are as follows:
+   * POSIX compliant OS
+   * C/C++ compiler
+   * Perl 5.X
+   * GNU make
+Following system component is optional:
+   * X window system, Version 11 (for the window module)
+
+The libpixmap library does NOT use autoconf/automake tools.
+However, the configuration system relies on GNU make's extended Makefile syntax and some perl scripts.
+This is the reason why GNU make and Perl 5.x are required for the compilation.
+
+The window module is optional component.
+You can compile the library without the module.
+The module has window system abstraction layer called "backend".
+X11/Xlib is the only window system supported at this time, though.
+
+3. Installation
+Following steps are required to install the libpixmap library on your system:
+   1) Edit make.inc to set up system commands, directories and compiler flags.
+   2) Edit src/config.mk to set up configuration of the library.
+   3) Run make command to compile the library.
+      Run "make install [PREFIX=<somewhere>]" to install files if the compilation is successfully finished.
+   4) If you need build the FORTRAN binding, move into bindings/fortran/ directory, and run make command.
+      Run "make install [FPREFIX=<somewhere>]" to install files if the compilation is successfully finished.
+      Specify FPREFIX explicitly if you need to install files in a different directory from PREFIX.
+
+3-1. make.inc
+General settings for make command are written in make.inc file.
+Followings are defined in the file:
+   CC      ... C compiler command
+   CFLAGS  ... C compiler flags
+   CPP     ... C preprocessor
+   FC      ... FORTRAN compiler command
+   FFLAGS  ... FORTRAN compiler flags
+   PFLAGS  ... Compiler preprocessor flags
+   LIBS    ... Linkage flags
+   GMAKE   ... GNU make command
+   AR      ... Library archiver command
+   RANLIB  ... Ranlib command (optional)
+   LD      ... Linker/Loader command
+   INSTALL ... Installer command
+   M755    ... Installer flags for executable files
+   M644    ... Installer flags for other files
+   BINDIR  ... Directory name for executable binaries
+   INCDIR  ... Directory name for include files
+   LIBDIR  ... Directory name for library files
+   MANDIR  ... Directory name for man pages
+   X11DIR  ... X11 directory name (absolute path)
+
+3-2. src/config.mk
+Configurations are written in src/config.mk file.
+Followings are defined in the file:
+   PREFIX    ... Installation directory path (absolute path, e.g. /usr/local)
+   LIBNAME   ... Library name (library file name is lib${LIBNAME}.a)
+   BUILD     ... Build mode [product|develop|debug]
+   FONT      ... Font used in draw_string function [banner|lpd]
+                 Default is FONT=lpd, which is to use 9x12pt lpd font.
+                 Set FONT=banner if you want to use 8x8pt banner font instead of lpd font.
+   PIXELSZ   ... Pixel data format [3|4]
+   POLIGON   ... mode for fill_polygon function [outlined|asis]
+                 Set POLYGON=asis to avoid drawing outline of the polygon.
+   PNM2B     ... Support multi-byte PNM image file I/O? [yes|no]
+   RGBTXT    ... X11 color name database file (e.g. /usr/shared/X11/rgb.txt)
+   SHARED    ... Require shared library? (no or version number like 1.1.1)
+                 Set SHARED=no if you do not want shared library.
+   WINSYS    ... Window system backend [none|x11|xlib]
+   |             Set WINSYS=none if you do not want the window module.
+   +--MOTION ... Detect pointer motion notify? [yes|no]
+   +--THREAD ... Use threaded window update? [yes|no]
+
+EOF.

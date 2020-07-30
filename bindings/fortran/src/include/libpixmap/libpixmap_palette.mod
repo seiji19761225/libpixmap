@@ -1,0 +1,1 @@
+../../libpixmap_palette.mod
